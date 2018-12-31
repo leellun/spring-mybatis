@@ -3,10 +3,6 @@ package com.newland.ssm.bean;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String lastName;
@@ -56,10 +52,4 @@ public class Employee implements Serializable {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", lastName=" + lastName + ", email=" + email + ", gender=" + gender + "]";
-	}
-
 }

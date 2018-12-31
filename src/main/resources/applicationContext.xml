@@ -31,13 +31,6 @@
 
 	<!-- 开启基于注解的事务 -->
 	<tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
-	
-	<!-- 
-	整合mybatis 
-		目的：1、spring管理所有组件。mapper的实现类。
-				service==>Dao   @Autowired:自动注入mapper；
-			2、spring用来管理事务，spring声明式事务
-	-->
 	<!--创建出SqlSessionFactory对象  -->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -46,19 +39,9 @@
 		<!--mapperLocations: 指定mapper文件的位置-->
 		<property name="mapperLocations" value="classpath:com/newland/ssm/*.xml"></property>
 	</bean>
-	
-	<!--配置一个可以进行批量执行的sqlSession  -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
 		<constructor-arg name="executorType" value="BATCH"></constructor-arg>
 	</bean>
-	
-	<!-- 扫描所有的mapper接口的实现，让这些mapper能够自动注入；
-	base-package：指定mapper接口的包名
-	 -->
 	<mybatis-spring:scan base-package="com.newland.ssm.dao"/>
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.atguigu.mybatis.dao"></property>
-	</bean> -->
-	
 </beans>

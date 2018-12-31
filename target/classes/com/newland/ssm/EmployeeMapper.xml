@@ -3,7 +3,7 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.newland.ssm.dao.EmployeeMapper">
-
+	<cache eviction="FIFO" flushInterval="60000" size="1024" readOnly="true"></cache>
 	<!-- public Employee getEmpById(Integer id); -->
 	<select id="getEmpById" resultType="com.newland.ssm.bean.Employee">
 		select * from tbl_employee where id=#{id}
